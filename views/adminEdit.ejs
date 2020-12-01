@@ -1,0 +1,46 @@
+<%- include('partials/_header') %>
+
+<%- include('partials/_nav') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">Editar Usuario</p>
+                    </blockquote>
+
+                    <form action="/admin/edit/<%=object.id%>" method="POST">
+                        <div class="form-group">
+                            <input type="text" name = "name" placeholder="Nombre" class = "form-control" autocomplete="off"> <!--value = "<%= object.name%>"-->
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name = "lastname" placeholder="Apellido" class = "form-control" autocomplete="off"> <!--value = "<%= object.lastname%>"-->
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name = "dni" placeholder="Cedula" class = "form-control" autocomplete="off"> <!--value = "<%= object.dni%>"-->
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name = "rol" placeholder="ROL" class = "form-control" autocomplete="off"> <!--value = "<%= object.rol%>"-->
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name = "user" placeholder="Usuario" class = "form-control" autocomplete="off"> <!--value = "<%= object.user%>"-->
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name = "pass" placeholder="Contraseña" class = "form-control" autocomplete="off"> <!--value = "<%= object.pass%>"-->
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include('partials/_footer') %>

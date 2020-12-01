@@ -1,0 +1,182 @@
+<%- include('partials/_header') %>
+<%- include('partials/_nav') %>
+
+<div class="container">
+    <div class="row">
+        <!--Form-->
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">Ingresar Caso</p>
+                    </blockquote>
+
+                    <form action="/helper/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name = "name" placeholder="Nombre" class = "form-control" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name = "lastname" placeholder="Apellido" class = "form-control" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name = "dni" placeholder="Cedula" class = "form-control" autocomplete="off">
+                        </div>
+                        <p>Sexo:</p>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Masculino</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">Femenino</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                            <label class="form-check-label" for="inlineRadio3">Otro</label>
+                        </div>
+                        <br></br>
+                        <p>Fecha Nacimiento:</p>
+                        <div class="form-group">
+                            <input type="date" name = "date" class = "form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name = "dr" placeholder="Direccion Recidencia" class = "form-control" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name = "dt" placeholder="Direccion Trabajo" class = "form-control" autocomplete="off">
+                        </div>
+                        <p>Resultado Examen:</p>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio4" value="option4">
+                            <label class="form-check-label" for="inlineRadio4">Positivo</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio5" value="option5">
+                            <label class="form-check-label" for="inlineRadio5">Negativo</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio6" value="option6">
+                            <label class="form-check-label" for="inlineRadio6">Muerte</label>
+                        </div>
+
+                        <br></br>
+                        <p>Fecha Examen:</p>
+                        <div class="form-group">
+                            <input type="date" name = "date2" class = "form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">Buscar Caso</p>
+                    </blockquote>
+
+                    <table class = "table table-bordered table-hover">
+                        <tbody>
+                            <tr>
+                                <form action="/helper/id" method="POST">
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text" name = "_id2" placeholder="ID" class = "form-control" autocomplete="off">
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="submit" class="btn btn-primary">Buscar</button>
+                                    </td>
+                                </form>
+                            </tr>
+
+                            <tr>
+                                <form action="/helper/name" method="POST">
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text" name = "name2" placeholder="Nombre" class = "form-control" autocomplete="off">
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="submit" class="btn btn-primary">Buscar</button>
+                                    </td>
+                                </form>
+                            </tr>
+    
+                            <tr>
+                                <form action="/helper/dni" method="POST">
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="number" name = "dni2" placeholder="Cedula" class = "form-control" autocomplete="off">
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="submit" class="btn btn-primary">Buscar</button>
+                                    </td>
+                                </form>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class = "table table-bordered table-hover">
+
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <a href="/helper/all" class = "btn btn-success btn-block">Busqueda General</a>
+                                </th>
+                                <th>
+                                    <a href="/helper/clean" class = "btn btn-danger btn-block">Limpiar</a>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+                    <table class = "table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    Nombre
+                                </th class="text-center">
+    
+                                <th class="text-center">
+                                    Cedula
+                                </th>
+                                <th class="text-center">
+                                    PSR
+                                </th>
+                                <th class="text-center">
+                                    Accion
+                                </th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                        <!-- Loop through object from router
+                        <% for(var i = 0; i < object.length; i++){ %>
+                            <tr>
+                                <td class="text-center"><%= object[i].name %></td>
+                                <td class="text-center"><%= object[i].dni %></td>
+                                <td class="text-center"><%= object[i].psr %></td>
+                                <td class="text-center">
+                                    <a href="/helper/edit/object[i].id" class = "btn btn-warning">Editar</a>
+                                    <a href="/helper/delete/object[i].id" class = "btn btn-danger">Eliminar</a>
+                                </td>
+                            </tr>
+                        <% } %>-->
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<%- include('partials/_footer') %>

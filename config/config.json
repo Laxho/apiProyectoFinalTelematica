@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "laxho",
+    "username": "admin",
     "password": "Krakken99.",
     "database": "mysqldb",
-    "host": "mysqldb.cqgndal9tgom.us-east-1.rds.amazonaws.com",
+    "host": "ec2-52-207-58-184.compute-1.amazonaws.com",
     "dialect": "mysql",
     "port": 3306    
   },

@@ -1,0 +1,138 @@
+<%- include('partials/_header') %>
+
+<%- include('partials/_nav') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">Crear Usuario</p>
+                    </blockquote>
+
+                    <form action="/admin/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name = "name" placeholder="Nombre" class = "form-control" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name = "lastname" placeholder="Apellido" class = "form-control" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name = "dni" placeholder="Cedula" class = "form-control" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name = "rol" placeholder="ROL" class = "form-control" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name = "user" placeholder="Usuario" class = "form-control" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name = "pass" placeholder="Contraseña" class = "form-control" autocomplete="off">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Crear Cuenta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">Ver Usuarios</p>
+                    </blockquote>
+
+                    <table class = "table table-bordered table-hover">
+                        <tbody>
+        
+                                <tr>
+                                    <form action="/admin/name" method="POST">
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="text" name = "user" placeholder="Usuario" class = "form-control" autocomplete="off">
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="submit" class="btn btn-primary">Buscar</button>
+                                        </td>
+                                    </form>
+                                </tr>
+        
+                                <tr>
+                                    <form action="/admin/dni" method="POST">
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" name = "dni" placeholder="Cedula" class = "form-control" autocomplete="off">
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="submit" class="btn btn-primary">Buscar</button>
+                                        </td>
+                                    </form>
+                                </tr>
+                        </tbody>
+                    </table>
+
+                    <table class = "table table-bordered table-hover">
+
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <a href="/admin/all" class = "btn btn-success btn-block">Busqueda General</a>
+                                </th>
+                                <th>
+                                    <a href="/admin/clean" class = "btn btn-danger btn-block">Limpiar</a>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+                    <table class = "table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    Nombre
+                                </th>
+
+                                <th class="text-center">
+                                    Cedula
+                                </th>
+
+                                <th class="text-center">
+                                    Rol
+                                </th>
+
+                                <th class="text-center">
+                                    Accion
+                                </th>
+
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                        <!-- Loop through object from router
+                        <% for(var i = 0; i < object.length; i++){ %>
+                            <tr>
+                                <td class="text-center"><%= object[i].name %></td>
+                                <td class="text-center"><%= object[i].dni %></td>
+                                <td class="text-center"><%= object[i].rol %></td>
+                                <td class="text-center">
+                                    <a href="/admin/edit/object[i].id" class = "btn btn-warning">Editar</a>
+                                    <a href="/admin/delete/object[i].id" class = "btn btn-danger">Eliminar</a>
+                                </td>
+                            </tr>
+                        <% } %>-->
+                        
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<%- include('partials/_footer') %>

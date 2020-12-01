@@ -1,8 +1,16 @@
+
 const express = require('express')
 const app = express();
+//app.use(express.json());
+const port = 8000;
+app.set("view engine", "ejs")
+app.get('/',(req,res) =>{
+	res.render('index')
+});
 
-app.get('/hola', (req, res) => {
-  res.send('Hello World!')
+app.post('/ingreso', function (req, res) {
+  const params = req.body;
+	console.log(params);
 });
 
 app.listen(8000, () => {
