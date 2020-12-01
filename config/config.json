@@ -4,7 +4,8 @@
     "password": "Krakken99.",
     "database": "mysqldb",
     "host": "mysqldb.cqgndal9tgom.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 3306    
   },
   "test": {
     "username": "root",
