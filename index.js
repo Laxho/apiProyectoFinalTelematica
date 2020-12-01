@@ -49,7 +49,11 @@ app.post('/admin/add',async function(req,res){
 	console.log(req.body);
 	res.render('admin',{object:users})
 })
+app.get('/medic',function(req,res){
+	
+	res.render('medic',{object:users})
+})
 	
 app.listen(8000, () => {
-  console.log('Example app listening on port 8000!')
+  console.log("up on 8000 port")
 });
