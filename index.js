@@ -40,6 +40,7 @@ app.post('/ingreso', async function (req, res) {
   const user = users[0];
   console.log('user = ', user);
   if (!!user && user.password === params.pass) {
+	const mappedUsers = [user].map(mapUserToView);
 	if (user.role === 'admin') {
 		await renderAdminIndex(res, User);
 	}
