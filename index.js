@@ -18,7 +18,7 @@ const mapUserToView = user => {
 };
 
 app.get('/',(req,res) =>{
-	res.render('/index');
+	res.render('index');
 });
 
 app.post('/ingreso', async function (req, res) {
@@ -35,16 +35,16 @@ app.post('/ingreso', async function (req, res) {
   if (!!user && user.password === params.pass) {
 	const mappedUsers = [user].map(mapUserToView);
 	if (user.role === 'admin') {
-		res.render('/admin',{object: mappedUsers});
+		res.render('admin',{object: mappedUsers});
 	}
 	if (user.role === 'medic') {
-		res.render('/medic',{object: mappedUsers});
+		res.render('medic',{object: mappedUsers});
 	}
 	if (user.role === 'helper') {
 		res.render('/helper',{object: mappedUsers});
 	}
   } else {
-	res.render('/index');
+	res.render('index');
   }
 });
 app.get('/admin/add',async function (req,res){
