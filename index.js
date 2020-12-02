@@ -94,8 +94,6 @@ app.post('/admin/add',async function(req,res){
 app.get('/admin/edit/:id',async function (req,res){
 	const User = db.user;
 	const user = await User.findByPk(req.params.id);
-	console.log('req.params = ', req.params);
-	console.log('user = ', user);
 	res.render('adminEdit', {object: user});
 });
 
@@ -140,6 +138,38 @@ app.post('/helper/add', async (req, res) => {
 	};
 	const newCase = await Case.create(parsedParams);
 	await renderHelperIndex(res, Case);
+});
+
+app.get('/helper/edit/:id', async function (req,res){
+	const Case = db.Cases;
+	const casee = await Case.findByPk(req.params.id);
+	res.render('helperEdit', {object: casee});
+});
+
+app.post('/helper/edit/:id', async function (req, res){
+	const Case = db.Cases;
+	const casee = await Case.findByPk(req.params.id);
+	if (req.body.name !== "")
+		casee.nombre = req.body.name;
+	if (req.body.lastname !== "")
+		casee.apellido = req.body.lastname;
+	if (req.body.dni !== "")
+		casee.cedula = req.body.dni;
+	if (req.body.sex !== "")
+		casee.sexo = req.body.sex;
+	if (req.body.birthdate !== "")
+		casee.nacimiento = req.body.birthdate;
+	if (req.body.homeDir !== "")
+		casee.casa = req.body.homeDir;
+	if (req.body.jobDir !== "")
+		casee.trabajo = req.body.jobDir;
+	if (req.body.examResult !== "")
+		casee.examen = req.body.examResult;
+	if (req.body.examDate !== "")
+		casee.fechaex = req.body.examDate;
+
+	await user.save();
+	await renderAdminIndex(res, User);
 });
 
 app.listen(8000, () => {
