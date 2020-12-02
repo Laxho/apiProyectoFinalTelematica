@@ -70,7 +70,7 @@ app.post('/admin/add',async function(req,res){
 		password: params.pass
 	};
 	const newUser = await User.create(parsedParams);
-	res.render('/admin/add');
+	await renderAdminIndex(res, User);
 });
 
 app.get('/admin/edit/:id',async function (req,res){
@@ -98,7 +98,7 @@ app.post('/admin/edit/:id',async function (req, res){
 		user.password = req.body.pass;
 
 	await user.save();
-	res.render('/admin/add');
+	await renderAdminIndex(res, User);
 });
 
 app.get('/medic',function(req,res){
