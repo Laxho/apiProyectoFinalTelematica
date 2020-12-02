@@ -8,9 +8,6 @@ const port = 8000;
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));
 app.set("view engine", "ejs")
-app.get('/',(req,res) =>{
-	res.render('index');
-});
 
 const mapUserToView = user => {
 	return {
@@ -20,6 +17,10 @@ const mapUserToView = user => {
 	};
 };
 
+app.get('/',(req,res) =>{
+	res.render('/index');
+});
+
 app.post('/ingreso', async function (req, res) {
   const params = req.body;
   const User = db.user;
@@ -28,20 +29,22 @@ app.post('/ingreso', async function (req, res) {
 		  username: params.user
 	  }
   });
+  console.log('users = ', users);
   const user = users[0];
+  console.log('user = ', user);
   if (!!user && user.password === params.pass) {
 	const mappedUsers = [user].map(mapUserToView);
 	if (user.role === 'admin') {
-		res.render('admin',{object: mappedUsers});
+		res.render('/admin',{object: mappedUsers});
 	}
 	if (user.role === 'medic') {
-		res.render('medic',{object: mappedUsers});
+		res.render('/medic',{object: mappedUsers});
 	}
 	if (user.role === 'helper') {
-		res.render('helper',{object: mappedUsers});
+		res.render('/helper',{object: mappedUsers});
 	}
   } else {
-	res.render('index');
+	res.render('/index');
   }
 });
 app.get('/admin/add',async function (req,res){
