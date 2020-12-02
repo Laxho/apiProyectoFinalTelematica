@@ -149,7 +149,7 @@ app.get('/helper/edit/:id', async function (req,res){
 			idcaso: casee.id
 		}
 	});
-	
+
 	res.render('helperEdit', {object: casee, history: statuses});
 });
 
@@ -188,6 +188,28 @@ app.post('/helper/edit/:id', async function (req, res){
 		});
 	};
 	await renderHelperIndex(res, Case);
+});
+
+app.post('helper/name', (req, res) => {
+	const Case = db.Cases;
+	const cases = await Case.findAll({
+		where: {
+			name: req.body.name2
+		}
+	});
+	const mappedCases = cases.map(mapCaseToView);
+	res.render('helper',{object: mappedCases});
+});
+
+app.post('helper/dni', (req, res) => {
+	const Case = db.Cases;
+	const cases = await Case.findAll({
+		where: {
+			cedula: req.body.dni2
+		}
+	});
+	const mappedCases = cases.map(mapCaseToView);
+	res.render('helper',{object: mappedCases});
 });
 
 app.listen(8000, () => {
