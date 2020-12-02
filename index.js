@@ -71,7 +71,14 @@ app.post('/admin/add',async function(req,res){
 	console.log("////////////////////////////////////////////////////////////////////////////////");
 	console.log(req.body);
 	res.render('admin',{object:users})
-})
+});
+
+app.get('/admin/edit/:id',async function (req,res){
+	console.log('req.body = ', req.body);
+	console.log('req.id = ', req.id);
+	res.render('admin',{object:[]});
+});
+
 app.get('/medic',function(req,res){
 	
 	res.render('medic',{object:users})
