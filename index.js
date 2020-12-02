@@ -18,10 +18,25 @@ const mapUserToView = (user) => {
 	};
 };
 
+const mapCaseToView = (casee) => {
+	return {
+		id: casee.id,
+		name: casee.nombre + " " + casee.apellido,
+		dni: casee.cedula,
+		examen: casee.examen
+	};
+};
+
 const renderAdminIndex = async (res, User) => {
 	const users = await User.findAll();
 	const mappedUsers = users.map(mapUserToView);
 	res.render('admin',{object: mappedUsers});
+};
+
+const renderHelperIndex = async (res, Case) => {
+	const cases = await Case.findAll();
+	const mappedCases = cases.map(mapCaseToView);
+	res.render('helper',{object: mappedCases});
 };
 
 app.get('/',(req,res) =>{
@@ -31,6 +46,7 @@ app.get('/',(req,res) =>{
 app.post('/ingreso', async function (req, res) {
   const params = req.body;
   const User = db.user;
+  const Case = db.Cases;
   const users = await User.findAll({
 	  where: {
 		  username: params.user
@@ -48,12 +64,13 @@ app.post('/ingreso', async function (req, res) {
 		res.render('medic',{object: mappedUsers});
 	}
 	if (user.role === 'helper') {
-		res.render('helper',{object: mappedUsers});
+		await renderHelperIndex(res, Case);
 	}
   } else {
 	res.render('index');
   }
 });
+
 app.get('/admin/add',async function (req,res){
 	const User =db.user;
 	await renderAdminIndex(res, User);
@@ -105,8 +122,26 @@ app.post('/admin/edit/:id',async function (req, res){
 app.get('/medic',function(req,res){
 	
 	res.render('medic',{object:users})
-})
-	
+});
+
+app.post('/helper', async (req, res) => {
+	const Case = db.Cases;
+	const params= req.body;
+	const parsedParams={
+		nombre: params.name,
+		apellido: params.lastname,
+		cedula: params.dni,
+		sexo: params.sex,
+		nacimiento: params.birthdate,
+		casa: params.homeDir,
+		trabajo: params.jobDir,
+		examen: params.examResult,
+		fechaex: params.examDate
+	};
+	const newCase = await Case.create(parsedParams);
+	await renderHelperIndex(res, Case);
+});
+
 app.listen(8000, () => {
   console.log("up on 8000 port")
 });

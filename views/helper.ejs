@@ -24,48 +24,48 @@
                         </div>
                         <p>Sexo:</p>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <input class="form-check-input" type="radio" name="sex" id="inlineRadio1" value="masculino">
                             <label class="form-check-label" for="inlineRadio1">Masculino</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <input class="form-check-input" type="radio" name="sex" id="inlineRadio2" value="femenino">
                             <label class="form-check-label" for="inlineRadio2">Femenino</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                            <input class="form-check-input" type="radio" name="sex" id="inlineRadio3" value="otro">
                             <label class="form-check-label" for="inlineRadio3">Otro</label>
                         </div>
                         <br></br>
                         <p>Fecha Nacimiento:</p>
                         <div class="form-group">
-                            <input type="date" name = "date" class = "form-control">
+                            <input type="date" name = "birthdate" class = "form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" name = "dr" placeholder="Direccion Recidencia" class = "form-control" autocomplete="off">
+                            <input type="text" name = "homeDir" placeholder="Direccion Recidencia" class = "form-control" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <input type="text" name = "dt" placeholder="Direccion Trabajo" class = "form-control" autocomplete="off">
+                            <input type="text" name = "jobDir" placeholder="Direccion Trabajo" class = "form-control" autocomplete="off">
                         </div>
                         <p>Resultado Examen:</p>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio4" value="option4">
+                            <input class="form-check-input" type="radio" name="examResult" id="inlineRadio4" value="positivo">
                             <label class="form-check-label" for="inlineRadio4">Positivo</label>
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio5" value="option5">
+                            <input class="form-check-input" type="radio" name="examResult" id="inlineRadio5" value="negativo">
                             <label class="form-check-label" for="inlineRadio5">Negativo</label>
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio6" value="option6">
+                            <input class="form-check-input" type="radio" name="examResult" id="inlineRadio6" value="muerte">
                             <label class="form-check-label" for="inlineRadio6">Muerte</label>
                         </div>
 
                         <br></br>
                         <p>Fecha Examen:</p>
                         <div class="form-group">
-                            <input type="date" name = "date2" class = "form-control">
+                            <input type="date" name = "examDate" class = "form-control">
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
                     </form>
@@ -148,7 +148,7 @@
                                     Cedula
                                 </th>
                                 <th class="text-center">
-                                    PSR
+                                    EXAMEN
                                 </th>
                                 <th class="text-center">
                                     Accion
@@ -157,18 +157,17 @@
                         </thead>
     
                         <tbody>
-                        <!-- Loop through object from router
                         <% for(var i = 0; i < object.length; i++){ %>
                             <tr>
                                 <td class="text-center"><%= object[i].name %></td>
                                 <td class="text-center"><%= object[i].dni %></td>
-                                <td class="text-center"><%= object[i].psr %></td>
+                                <td class="text-center"><%= object[i].examen %></td>
                                 <td class="text-center">
-                                    <a href="/helper/edit/object[i].id" class = "btn btn-warning">Editar</a>
-                                    <a href="/helper/delete/object[i].id" class = "btn btn-danger">Eliminar</a>
+                                    <a href= <%= "/helper/edit/"+object[i].id %> class = "btn btn-warning">Editar</a>
+                                    <a href=<%= "/helper/delete/"+object[i].id %> class = "btn btn-danger">Eliminar</a>
                                 </td>
                             </tr>
-                        <% } %>-->
+                        <% } %>
                         </tbody>
                     </table>
 
