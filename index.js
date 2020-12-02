@@ -17,6 +17,11 @@ const mapUserToView = user => {
 	};
 };
 
+const renderAdminIndex = (res) => {
+	const users = await User.findAll();
+	res.render('admin',{object:users});
+};
+
 app.get('/',(req,res) =>{
 	res.render('index');
 });
@@ -48,7 +53,6 @@ app.post('/ingreso', async function (req, res) {
   }
 });
 app.get('/admin/add',async function (req,res){
-	console.log(req.body);
 	const User =db.user;
 	const users =await User.findAll();
 	const mappedUsers = users.map(mapUserToView);
@@ -66,17 +70,33 @@ app.post('/admin/add',async function(req,res){
 		password:params.pass
 	};
 	const newUser = await User.create(parsedParams);
-	console.log(newUser);
-	const users =await User.findAll();
-	console.log("////////////////////////////////////////////////////////////////////////////////");
-	console.log(req.body);
-	res.render('admin',{object:users})
+	renderAdminIndex(res);
 });
 
 app.get('/admin/edit/:id',async function (req,res){
-	console.log('req.body = ', req.body);
-	console.log('req.id = ', req.id);
-	res.render('admin',{object:[]});
+	const User = db.user;
+	const user = await User.findByPk(req.params.id);
+	res.render('adminEdit', {object: user});
+});
+
+app.post('/admin/edit/:id',async function (req, res){
+	const User = db.user;
+	const user = await User.findByPk(req.params.id);
+	if (req.body.name !== "")
+		user.name = req.body.name;
+	if (req.body.lastname !== "")
+		user.lastName = req.body.lastname;
+	if (req.body.dni !== "")
+		user.identification = req.body.dni;
+	if (req.body.rol !== "")
+		user.role = req.body.rol;
+	if (req.body.user !== "")
+		user.username = req.body.user;
+	if (req.body.pass !== "")
+		user.password = req.body.pass;
+
+	await user.save();
+	renderAdminIndex(res);
 });
 
 app.get('/medic',function(req,res){

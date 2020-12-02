@@ -15,7 +15,7 @@
                         <p class="mb-0">Editar Usuario</p>
                     </blockquote>
 
-                    <form action="/admin/edit/<%=object.id%>" method="POST">
+                    <form action=<%= "/admin/edit/"+object.id %> method="POST">
                         <div class="form-group">
                             <input type="text" name = "name" placeholder="Nombre" class = "form-control" autocomplete="off"> <!--value = "<%= object.name%>"-->
                         </div>
