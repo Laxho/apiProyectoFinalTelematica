@@ -66,7 +66,7 @@ app.post('/admin/add',async function(req,res){
 		identification:params.dni,
 		name:params.name,
 		lastName:params.lastname,
-		username:params.username,
+		username:params.user,
 		password:params.pass
 	};
 	const newUser = await User.create(parsedParams);
@@ -76,6 +76,8 @@ app.post('/admin/add',async function(req,res){
 app.get('/admin/edit/:id',async function (req,res){
 	const User = db.user;
 	const user = await User.findByPk(req.params.id);
+	console.log('req.params = ', req.params);
+	console.log('user = ', user);
 	res.render('adminEdit', {object: user});
 });
 
