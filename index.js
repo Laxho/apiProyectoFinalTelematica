@@ -56,9 +56,7 @@ app.post('/ingreso', async function (req, res) {
 });
 app.get('/admin/add',async function (req,res){
 	const User =db.user;
-	const users =await User.findAll();
-	const mappedUsers = users.map(mapUserToView);
-	res.render('admin',{object:mappedUsers});
+	await renderAdminIndex(res, User);
 });
 
 app.post('/admin/add',async function(req,res){
