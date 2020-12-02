@@ -42,7 +42,7 @@ app.post('/ingreso', async function (req, res) {
   if (!!user && user.password === params.pass) {
 	const mappedUsers = [user].map(mapUserToView);
 	if (user.role === 'admin') {
-		res.render('admin',{object: mappedUsers});
+		res.render('/admin/add');
 	}
 	if (user.role === 'medic') {
 		res.render('medic',{object: mappedUsers});
