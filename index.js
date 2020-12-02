@@ -190,7 +190,7 @@ app.post('/helper/edit/:id', async function (req, res){
 	await renderHelperIndex(res, Case);
 });
 
-app.post('helper/name', async (req, res) => {
+app.post('/helper/name', async (req, res) => {
 	const Case = db.Cases;
 	const cases = await Case.findAll({
 		where: {
@@ -201,7 +201,7 @@ app.post('helper/name', async (req, res) => {
 	res.render('helper',{object: mappedCases});
 });
 
-app.post('helper/dni', async (req, res) => {
+app.post('/helper/dni', async (req, res) => {
 	const Case = db.Cases;
 	const cases = await Case.findAll({
 		where: {
