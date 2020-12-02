@@ -168,7 +168,18 @@ app.post('/helper/edit/:id', async function (req, res){
 	if (req.body.examDate !== "")
 		casee.fechaex = req.body.examDate;
 
-	await user.save();
+	await casee.save();
+
+	if (!!req.body.newState && !!req.body.newStateDate) {
+		const Status = db.Status;
+		const newStatus = await Status.create({
+			estado: req.body.newState,
+			fechaestado: req.body.newStateDate,
+			cedula: req.body.dni,
+			nombre: req.body.name + " " + req.body.lastname,
+			idcaso: casee.id
+		});
+	};
 	await renderAdminIndex(res, User);
 });
 

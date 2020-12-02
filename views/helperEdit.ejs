@@ -25,7 +25,7 @@
                         <p class="mb-0">Editar Caso</p>
                     </blockquote>
 
-                    <form action="/helper/edit/<%=object.id%>" method="POST">
+                    <form action=<%= "/helper/edit/"+object.id%> method="POST">
                         <div class="form-group">
                             <input type="text" name = "name" placeholder="Nombre" class = "form-control" autocomplete="off"> <!--value = "<%= object.name%>"-->
                         </div>
@@ -83,34 +83,34 @@
                         <p>Actualizar Estado:</p>
 
                         <div class="form-check form-check">
-                            <input class="form-check-input" type="radio" name="RadioOptions3" id="Radio6" value="option6"> <!--checked = "<%= object.casa%>"-->
+                            <input class="form-check-input" type="radio" name="newState" id="Radio6" value="home"> <!--checked = "<%= object.casa%>"-->
                             <label class="form-check-label" for="Radio6">Tratamiento en Casa</label>
                         </div>
 
                         <div class="form-check form-check">
-                            <input class="form-check-input" type="radio" name="RadioOptions3" id="Radio7" value="option7">  <!--checked = "<%= object.hosp%>"-->
+                            <input class="form-check-input" type="radio" name="newState" id="Radio7" value="hospital">  <!--checked = "<%= object.hosp%>"-->
                             <label class="form-check-label" for="Radio7">Tratamiento Hospital</label>
                         </div>
 
                         <div class="form-check form-check">
-                            <input class="form-check-input" type="radio" name="RadioOptions3" id="Radio8" value="option8"> <!--checked = "<%= object.uci%>"-->
+                            <input class="form-check-input" type="radio" name="newState" id="Radio8" value="uci"> <!--checked = "<%= object.uci%>"-->
                             <label class="form-check-label" for="Radio8">Tratamiento en UCI</label>
                         </div>
 
                         <div class="form-check form-check">
-                            <input class="form-check-input" type="radio" name="RadioOptions3" id="Radio9" value="option9">  <!--checked = "<%= object.curado%>"-->
+                            <input class="form-check-input" type="radio" name="newState" id="Radio9" value="healthy">  <!--checked = "<%= object.curado%>"-->
                             <label class="form-check-label" for="Radio9">Curado</label>
                         </div>
 
                         <div class="form-check form-check">
-                            <input class="form-check-input" type="radio" name="RadioOptions3" id="Radio10" value="option10">  <!--checked = "<%= object.muerto%>"-->
+                            <input class="form-check-input" type="radio" name="newState" id="Radio10" value="dead">  <!--checked = "<%= object.muerto%>"-->
                             <label class="form-check-label" for="Radio10">Muerto</label>
                         </div>
                         <br>
 
                         <p>Fecha Ultimo Cambio:</p>
                         <div class="form-group">
-                            <input type="date" name = "date3" class = "form-control"> <!--value = "<%= object.date3%>"-->
+                            <input type="date" name = "newStateDate" class = "form-control"> <!--value = "<%= object.date3%>"-->
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary btn-block">Enviar</button>
