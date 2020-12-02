@@ -201,7 +201,7 @@ app.post('helper/name', (req, res) => {
 	res.render('helper',{object: mappedCases});
 });
 
-app.post('helper/dni', (req, res) => {
+app.post('helper/dni', async (req, res) => {
 	const Case = db.Cases;
 	const cases = await Case.findAll({
 		where: {
