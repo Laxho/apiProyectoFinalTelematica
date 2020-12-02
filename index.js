@@ -9,7 +9,7 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));
 app.set("view engine", "ejs")
 
-const mapUserToView = user => {
+const mapUserToView = (user) => {
 	return {
 		name:user.name+" "+user.lastName,
 		dni:user.identification,
@@ -17,7 +17,7 @@ const mapUserToView = user => {
 	};
 };
 
-const renderAdminIndex = (res) => {
+const renderAdminIndex = async (res) => {
 	const users = await User.findAll();
 	res.render('admin',{object:users});
 };
@@ -70,7 +70,7 @@ app.post('/admin/add',async function(req,res){
 		password:params.pass
 	};
 	const newUser = await User.create(parsedParams);
-	renderAdminIndex(res);
+	await renderAdminIndex(res);
 });
 
 app.get('/admin/edit/:id',async function (req,res){
@@ -96,7 +96,7 @@ app.post('/admin/edit/:id',async function (req, res){
 		user.password = req.body.pass;
 
 	await user.save();
-	renderAdminIndex(res);
+	await renderAdminIndex(res);
 });
 
 app.get('/medic',function(req,res){
