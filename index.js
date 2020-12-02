@@ -149,6 +149,7 @@ app.get('/helper/edit/:id', async function (req,res){
 			idcaso: casee.id
 		}
 	});
+	
 	res.render('helperEdit', {object: casee, history: statuses});
 });
 
