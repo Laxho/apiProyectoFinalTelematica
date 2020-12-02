@@ -18,7 +18,7 @@ const mapUserToView = (user) => {
 	};
 };
 
-const renderAdminIndex = async (res) => {
+const renderAdminIndex = async (res, User) => {
 	const users = await User.findAll();
 	res.render('admin',{object:users});
 };
@@ -71,7 +71,7 @@ app.post('/admin/add',async function(req,res){
 		password:params.pass
 	};
 	const newUser = await User.create(parsedParams);
-	await renderAdminIndex(res);
+	await renderAdminIndex(res, User);
 });
 
 app.get('/admin/edit/:id',async function (req,res){
@@ -99,7 +99,7 @@ app.post('/admin/edit/:id',async function (req, res){
 		user.password = req.body.pass;
 
 	await user.save();
-	await renderAdminIndex(res);
+	await renderAdminIndex(res, User);
 });
 
 app.get('/medic',function(req,res){
