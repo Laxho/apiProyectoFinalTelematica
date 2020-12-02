@@ -180,7 +180,7 @@ app.post('/helper/edit/:id', async function (req, res){
 			idcaso: casee.id
 		});
 	};
-	await renderAdminIndex(res, User);
+	await renderHelperIndex(res, Case);
 });
 
 app.listen(8000, () => {
