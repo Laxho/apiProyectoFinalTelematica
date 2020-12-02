@@ -20,7 +20,8 @@ const mapUserToView = (user) => {
 
 const renderAdminIndex = async (res, User) => {
 	const users = await User.findAll();
-	res.render('admin',{object:users});
+	const mappedUsers = users.map(mapUserToView);
+	res.render('admin',{object: mappedUsers});
 };
 
 app.get('/',(req,res) =>{
