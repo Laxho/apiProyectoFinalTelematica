@@ -47,7 +47,7 @@ app.post('/ingreso', async function (req, res) {
 		res.render('medic',{object: mappedUsers});
 	}
 	if (user.role === 'helper') {
-		res.render('/helper',{object: mappedUsers});
+		res.render('helper',{object: mappedUsers});
 	}
   } else {
 	res.render('index');
