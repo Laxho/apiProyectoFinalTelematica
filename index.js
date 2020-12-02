@@ -11,9 +11,10 @@ app.set("view engine", "ejs")
 
 const mapUserToView = (user) => {
 	return {
-		name:user.name+" "+user.lastName,
-		dni:user.identification,
-		rol:user.role
+		id: user.id,
+		name: user.name+" "+user.lastName,
+		dni: user.identification,
+		rol: user.role
 	};
 };
 
