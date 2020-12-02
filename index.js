@@ -65,11 +65,12 @@ app.post('/admin/add',async function(req,res){
 	const User=db.user;
 	const params=req.body;
 	const parsedParams={
-		identification:params.dni,
-		name:params.name,
-		lastName:params.lastname,
-		username:params.user,
-		password:params.pass
+		identification: params.dni,
+		name: params.name,
+		role: params.rol,
+		lastName: params.lastname,
+		username: params.user,
+		password: params.pass
 	};
 	const newUser = await User.create(parsedParams);
 	await renderAdminIndex(res, User);
