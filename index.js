@@ -142,8 +142,14 @@ app.post('/helper/add', async (req, res) => {
 
 app.get('/helper/edit/:id', async function (req,res){
 	const Case = db.Cases;
+	const Status = db.Status;
 	const casee = await Case.findByPk(req.params.id);
-	res.render('helperEdit', {object: casee});
+	const statuses = await Status.findAll({
+		where: {
+			idcaso: casee.id
+		}
+	});
+	res.render('helperEdit', {object: casee, history: statuses});
 });
 
 app.post('/helper/edit/:id', async function (req, res){
