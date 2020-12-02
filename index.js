@@ -9,26 +9,46 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));
 app.set("view engine", "ejs")
 app.get('/',(req,res) =>{
-
-	res.render('index')
+	res.render('index');
 });
 
-app.post('/ingreso', function (req, res) {
+const mapUserToView = user => {
+	return {
+		name:user.name+" "+user.lastName,
+		dni:user.identification,
+		rol:user.role
+	};
+};
+
+app.post('/ingreso', async function (req, res) {
   const params = req.body;
-	console.log(params);
+  const User = db.user;
+  const users = await User.findAll({
+	  where: {
+		  username: params.user
+	  }
+  });
+  const user = users[0];
+  if (!!user && user.password === params.pass) {
+	const mappedUsers = [user].map(mapUserToView);
+	if (user.role === 'admin') {
+		res.render('admin',{object: mappedUsers});
+	}
+	if (user.role === 'medic') {
+		res.render('medic',{object: mappedUsers});
+	}
+	if (user.role === 'helper') {
+		res.render('helper',{object: mappedUsers});
+	}
+  } else {
+	res.render('index');
+  }
 });
 app.get('/admin/add',async function (req,res){
 	console.log(req.body);
 	const User =db.user;
 	const users =await User.findAll();
-	const mappedUsers = users.map(function(user){
-		return {
-		name:user.name+" "+user.lastName,
-		dni:user.identification,
-		rol:user.role
-
-		};
-	});
+	const mappedUsers = users.map(mapUserToView);
 	res.render('admin',{object:mappedUsers});
 });
 
