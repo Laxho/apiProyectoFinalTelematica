@@ -124,7 +124,7 @@ app.get('/medic',function(req,res){
 	res.render('medic',{object:users})
 });
 
-app.post('/helper', async (req, res) => {
+app.post('/helper/add', async (req, res) => {
 	const Case = db.Cases;
 	const params= req.body;
 	const parsedParams={
